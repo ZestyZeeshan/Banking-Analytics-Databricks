@@ -5,7 +5,6 @@
 => **Project Overview**
 
 
-
 This project demonstrates an end-to-end Banking Analytics Data Engineering pipeline built using Databricks Free Edition and PySpark following Medallion Architecture.
 
 
