@@ -1,0 +1,56 @@
+What Is Data Ingestion?
+
+-> Data ingestion is the process of bringing data from source systems into a data platform for further processing.
+
+Data Engineering Flow
+Source System
+      │
+      ▼
+
+CSV File
+      │
+      ▼
+
+Databricks
+      │
+      ▼
+
+DataFrame
+      │
+      ▼
+
+Transformations
+
+=> This step is called: Data Ingestion
+
+Day 4 Learnings
+
+- Learned Data Ingestion.
+- Read CSV files from Unity Catalog Volume.
+- Used spark.read.csv().
+- Used header=True.
+- Used inferSchema=True.
+- Verified schema using printSchema().
+- Verified record count using count().
+Your Task
+
+Run these three commands:
+
+customers_df = spark.read.csv(
+    "/Volumes/banking_catalog/bronze/raw_files/customers.csv.txt",
+    header=True,
+    inferSchema=True
+)
+
+display(customers_df)
+
+customers_df.printSchema()
+
+customers_df.count()
+
+
+-----
+
+Delta Table : A Delta Table is a table stored in Delta Lake format that provides reliability, ACID transactions, and schema management.
+
+Bronze Layer : Stores raw ingested data with minimal or no transformations.

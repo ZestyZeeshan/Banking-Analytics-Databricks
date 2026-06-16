@@ -1,0 +1,265 @@
+# Day 1 - Project Overview & Fundamentals
+
+## Project Goal
+
+Build an end-to-end Banking Analytics Platform using Databricks, PySpark, Delta Lake, and SQL.
+
+Objectives:
+
+* Process banking data
+* Perform data quality checks
+* Build Bronze, Silver, Gold layers
+* Generate business insights
+* Detect suspicious transactions
+* Create dashboards
+
+---
+
+# Key Definitions
+
+## Python
+
+Programming language used for data engineering, analytics, and machine learning.
+
+## Pandas
+
+Library for processing structured data on a single machine.
+
+Example:
+100 MB data → Pandas ✅
+
+## Apache Spark
+
+Distributed processing engine for large-scale data.
+
+Example:
+100 GB data → Spark ✅
+
+## PySpark
+
+Python API for Apache Spark.
+
+## Databricks
+
+Cloud platform built on Spark for data engineering, analytics, and machine learning.
+
+## DataFrame
+
+A table-like structure with rows and columns.
+
+Example:
+
+| customer_id | name  |
+| ----------- | ----- |
+| C101        | Rahul |
+| C102        | Amit  |
+
+---
+
+# Why Spark Instead of Pandas?
+
+Pandas:
+
+Data
+↓
+Single Machine
+↓
+Processing
+
+Spark:
+
+Data
+↓
+Machine 1
+Machine 2
+Machine 3
+Machine 4
+↓
+Parallel Processing
+
+Spark is faster for large datasets.
+
+---
+
+# Banking Data Model
+
+CUSTOMER
+│
+▼
+ACCOUNT
+│
+▼
+TRANSACTION
+
+CUSTOMER
+│
+▼
+LOAN
+
+---
+
+# Primary Key
+
+Uniquely identifies a record.
+
+Examples:
+
+Customer → customer_id
+
+Account → account_id
+
+Transaction → transaction_id
+
+Loan → loan_id
+
+Example:
+
+customer_id = C101
+
+No two customers can have the same ID.
+
+---
+
+# Foreign Key
+
+Used to connect tables.
+
+Example:
+
+Customer Table
+
+## customer_id
+
+C101
+
+Account Table
+
+| account_id | customer_id |
+| ---------- | ----------- |
+| A1001      | C101        |
+
+customer_id in Account table is a Foreign Key.
+
+---
+
+# Medallion Architecture
+
+Raw Data
+│
+▼
+Bronze
+(Raw)
+│
+▼
+Silver
+(Clean)
+│
+▼
+Gold
+(Business Ready)
+
+---
+
+# Bronze Layer
+
+Stores data exactly as received.
+
+Example:
+
+rahul
+RAHUL
+Rahul
+
+No cleaning performed.
+
+---
+
+# Silver Layer
+
+Cleaned and validated data.
+
+Example:
+
+RAHUL
+RAHUL
+RAHUL
+
+Duplicates removed.
+Formats standardized.
+
+---
+
+# Gold Layer
+
+Business-ready data.
+
+Example:
+
+Customer Spending
+
+RAHUL → ₹50,000
+AMIT  → ₹30,000
+
+Used for reporting and dashboards.
+
+---
+
+# Project Flow
+
+CSV Files
+│
+▼
+Data Ingestion
+│
+▼
+Bronze Layer
+│
+▼
+Data Quality Checks
+│
+▼
+Silver Layer
+│
+▼
+Business Transformations
+│
+▼
+Gold Layer
+│
+▼
+Dashboard & Analytics
+
+---
+
+# Interview Notes
+
+What is Spark?
+
+Apache Spark is a distributed data processing engine used to process large datasets efficiently.
+
+What is Databricks?
+
+Databricks is a cloud-based platform built on Apache Spark for data engineering, analytics, and machine learning.
+
+What is a DataFrame?
+
+A DataFrame is a table-like structure consisting of rows and columns used to store and process data.
+
+What is Medallion Architecture?
+
+A data architecture pattern that organizes data into Bronze, Silver, and Gold layers.
+
+---
+
+# Final Structure Should Look Like
+
+Banking-Analytics-Databricks
+│
+├── datasets
+├── notebooks
+├── architecture
+├── screenshots
+├── notes
+│   └── Day01.md
+│
+└── README.md

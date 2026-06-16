@@ -1,0 +1,6 @@
+customer_id,customer_name,age,city
+C101,Rahul Sharma,29,Delhi
+C102,Amit Verma,35,Mumbai
+C103,Neha Gupta,27,Pune
+C104,Priya Singh,31,Bangalore
+C105,Arjun Kumar,40,Chennai

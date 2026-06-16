@@ -1,0 +1,93 @@
+Architecture & Data Lineage
+Objective : Understand how data flows through the Banking Analytics project and learn basic Delta Lake concepts.
+
+Data Lineage
+
+Tracks the journey of data from source to dashboard.
+
+customers.csv
+      ↓
+bronze.customers
+      ↓
+silver.customers
+      ↓
+gold.customer_summary
+      ↓
+Dashboard
+
+Interview Answer:
+
+Data lineage shows how data moves and transforms from source systems to reporting layers.
+
+Medallion Architecture
+Bronze
+Raw data
+No transformations
+Silver
+Cleaned & validated data
+Data quality checks applied
+Gold
+Business KPIs
+Reporting & dashboards
+Project Architecture
+CSV Files
+    ↓
+Volume (raw_files)
+    ↓
+Bronze Layer
+    ↓
+Silver Layer
+    ↓
+Gold Layer
+    ↓
+Dashboards
+Delta Lake
+
+Storage format used in Databricks.
+
+Benefits
+
+✅ ACID Transactions
+→ Prevents partial writes
+
+✅ Schema Enforcement
+→ Prevents invalid data structure
+
+✅ Time Travel
+→ Access previous versions of data
+
+Verification
+
+Used:
+
+DESCRIBE DETAIL banking_catalog.gold.customer_summary
+
+Output confirmed:
+
+format = delta
+
+Imp Concepts in day09
+Data Lineage
+Project Architecture
+Medallion Architecture
+Delta Lake
+ACID Transactions
+Schema Enforcement
+Time Travel
+
+
+What is Data Lineage?
+
+Tracks data movement from source to final dashboard.
+
+What is Medallion Architecture?
+
+A layered architecture consisting of Bronze, Silver, and Gold layers for data processing.
+
+What is Delta Lake?
+
+A storage layer that provides reliability, ACID transactions, and performance optimizations.
+
+Why use Bronze, Silver, and Gold layers?
+
+To separate raw, cleansed, and business-ready data for better maintainability and scalability.

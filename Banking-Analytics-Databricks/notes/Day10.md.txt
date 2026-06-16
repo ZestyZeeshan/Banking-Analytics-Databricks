@@ -1,0 +1,94 @@
+Imp Spark Optimization Concepts
+
+Learn how Spark processes large datasets efficiently and understand basic optimization concepts used in real-world Data Engineering projects.
+
+Transformation vs Action
+
+Transformation : Creates a new DataFrame but does not execute immediately.
+
+Examples:
+
+filter()
+select()
+join()
+groupBy()
+withColumn()
+Action
+
+Triggers execution and returns results.
+
+Examples:
+
+show()
+count()
+display()
+collect()
+
+Transformations create a new DataFrame and are lazily evaluated, while actions trigger execution and produce results.
+
+Lazy Evaluation : Spark does not execute transformations immediately. It waits until an action is called.
+
+Flow
+filter()
+   ↓
+select()
+   ↓
+join()
+   ↓
+count()
+
+Execution happens only at:
+
+count()
+Benefit
+Better optimization
+Faster execution
+Reduced unnecessary processing
+
+Spark uses lazy evaluation to optimize execution plans before processing data.
+
+Caching
+Definition
+
+Stores frequently used DataFrames in memory to avoid recomputation.
+
+df.cache()
+Benefit
+Faster repeated queries
+Improved performance
+
+Note : Databricks Free Edition (Serverless) does not support cache persistence.
+
+
+Caching stores frequently accessed data in memory for faster processing and reduced recomputation.
+
+Partitioning
+Definition
+
+Splits large datasets into smaller chunks for parallel processing.
+
+Example
+transactions
+│
+├── Jan
+├── Feb
+├── Mar
+
+Instead of reading all data, Spark reads only the required partition.
+
+Benefit
+Faster queries
+Reduced data scanning
+Better scalability
+Interview Answer
+
+Partitioning improves query performance by reducing the amount of data scanned.
+
+Why Spark is Fast?
+Parallel Processing
++
+In-Memory Computation
++
+Partitioned Data
+=
+High Performance

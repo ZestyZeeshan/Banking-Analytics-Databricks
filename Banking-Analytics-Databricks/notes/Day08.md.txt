@@ -1,0 +1,110 @@
+Day 08 – Dashboard Creation & Visualization
+Objective
+
+Created business dashboards from Gold Layer tables to generate insights for banking stakeholders.
+
+Flow
+Bronze
+  ↓
+Silver
+  ↓
+Gold
+  ↓
+Dashboard
+  ↓
+Business Insights
+
+Gold Tables Used
+customer_summary
+branch_summary
+loan_summary
+transaction_summary
+fraud_summary
+risk_summary
+
+Dashboards Created
+1. Top Customers Dashboard
+Source: customer_summary
+Chart: Bar Chart
+Purpose: Identify high-value customers.
+2. Branch Performance Dashboard
+Source: branch_summary
+Chart: Bar Chart
+Purpose: Compare branch deposits.
+3. Loan Distribution Dashboard
+Source: loan_summary
+Chart: Pie Chart
+Purpose: Analyze loan portfolio distribution.
+4. Transaction Analysis Dashboard
+Source: transaction_summary
+Chart: Bar Chart
+Purpose: Compare Debit vs Credit transactions.
+5. Risk Distribution Dashboard
+Source: risk_summary
+Chart: Bar Chart
+Purpose: Monitor Low, Medium, and High-Risk transactions.
+Key Concepts Learned
+Dashboard
+
+Collection of charts and KPIs used for business reporting.
+
+KPI (Key Performance Indicator)
+
+A metric used to measure business performance.
+
+Examples:
+
+Total Deposits
+Total Loans
+Fraud Alerts
+Total Transactions
+Visualization
+
+Graphical representation of data.
+
+Examples:
+
+Bar Chart
+Pie Chart
+Table
+Business Storytelling
+
+Converting data into meaningful business insights.
+
+Example:
+
+Raw Data:
+Branch A = ₹1,20,000
+
+Business Insight:
+Branch A is the highest-performing branch.
+Why Gold Layer for Dashboards?
+
+Because Gold Layer contains:
+
+Aggregated Data
+Business Metrics
+Reporting KPIs
+
+and is optimized for reporting.
+
+
+What is a Dashboard?
+
+A dashboard is a collection of charts and KPIs used to monitor business performance.
+
+What is a KPI?
+
+A measurable business metric used for performance tracking.
+
+Why use Gold tables for dashboards?
+
+Because Gold tables contain business-ready aggregated data.
+
+What dashboards did you create?
+
+Customer Analysis, Branch Analysis, Loan Analysis, Transaction Analysis, and Fraud Risk Monitoring.
+
+What is Business Storytelling?
+
+Transforming raw data into actionable business insights.

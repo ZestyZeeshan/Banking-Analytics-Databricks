@@ -1,0 +1,97 @@
+CSV Files
+    │
+    ▼
+
+Volumes
+    │
+    ▼
+
+Bronze Layer
+│
+├── customers
+├── accounts
+├── loans
+└── transactions
+    │
+    ▼
+
+Silver Layer
+│
+├── customers
+├── accounts
+├── loans
+├── transactions
+│
+├── rejected_customers
+├── rejected_accounts
+├── rejected_loans
+└── rejected_transactions
+│
+└── audit_table
+    │
+    ▼
+
+Gold Layer
+│
+├── customer_summary
+├── branch_summary
+├── loan_summary
+└── transaction_summary
+
+Gold Layer
+
+Purpose:
+
+Business-ready data
+KPIs and reporting
+Aggregated datasets
+customer_summary
+
+Business Question:
+
+Which customers hold the highest balance?
+
+Technique:
+
+Join customers + accounts
+Group by customer
+Sum balance
+branch_summary
+
+Business Question:
+
+Which branch has the highest deposits?
+
+Technique:
+
+Group by branch
+Sum balance
+loan_summary
+
+Business Question:
+
+How much loan amount has been issued by loan type?
+
+Technique:
+
+Group by loan_type
+Sum loan_amount
+transaction_summary
+
+Business Question:
+
+Which transaction type contributes the most money movement?
+
+Technique:
+
+Group by transaction_type
+Sum amount
+
+New PySpark Concepts->
+=> groupBy() : Groups records before aggregation.
+
+=> agg() : Performs aggregation functions.
+
+=> sum() : Calculates totals.
+
+=> orderBy(desc()) : Sorts results in descending order.

@@ -1,0 +1,237 @@
+Implemented a Silver Layer data quality framework in Databricks using PySpark, including null validation, duplicate removal, referential integrity checks, rejected-record handling, and audit metrics generation within a Medallion Architecture.
+
+# Day 05 - Silver Layer & Data Quality Framework
+
+## Objective
+
+Convert raw Bronze data into clean and validated Silver data using data quality checks and business rules.
+
+Flow:
+
+CSV Files
+↓
+Bronze Tables
+↓
+Data Quality Checks
+↓
+Silver Tables
+↓
+Rejected Tables
+
+---
+
+## Medallion Architecture
+
+### Bronze Layer
+
+* Stores raw source data
+* No transformations
+* Source of truth
+
+### Silver Layer
+
+* Cleans and validates data
+* Applies business rules
+* Removes bad records
+
+### Gold Layer
+
+* Business KPIs
+* Reporting
+* Analytics
+
+---
+
+## Data Quality Checks Implemented
+
+### 1. Null Validation
+
+Purpose:
+
+* Identify mandatory fields with NULL values
+
+Example:
+customer_name cannot be NULL
+
+---
+
+### 2. Duplicate Removal
+
+Purpose:
+
+* Remove duplicate business records
+
+Method:
+dropDuplicates(["customer_id"])
+
+---
+
+### 3. Referential Integrity Validation
+
+Purpose:
+
+* Ensure relationships between tables are valid
+
+Examples:
+
+* Account must belong to a valid Customer
+* Loan must belong to a valid Customer
+* Transaction must belong to a valid Account
+
+---
+
+### 4. Rejected Records Framework
+
+Purpose:
+
+* Store invalid records separately instead of deleting them
+
+Tables Created:
+
+* rejected_customers
+* rejected_accounts
+* rejected_loans
+* rejected_transactions
+
+Benefits:
+
+* Auditing
+* Troubleshooting
+* Data Governance
+
+---
+
+### 5. Data Quality Metrics
+
+Metrics Captured:
+
+* Total Records
+* Valid Records
+* Rejected Records
+
+Formula:
+
+Total Records = Valid Records + Rejected Records
+
+Purpose:
+
+* Monitor pipeline health
+* Track data quality
+
+---
+
+## Important PySpark Concepts
+
+### Inner Join
+
+Returns matching records from both tables.
+
+Use Case:
+Valid Accounts and Valid Transactions.
+
+---
+
+### Left Anti Join
+
+Returns records from left table that do not have matching records in right table.
+
+Use Case:
+Find invalid Accounts, Loans, and Transactions.
+
+---
+
+### dropDuplicates()
+
+Removes duplicate records using business keys.
+
+---
+
+### filter()
+
+Used for validation checks.
+
+Examples:
+
+* NULL checks
+* Negative amount checks
+
+---
+
+## Banking Business Rules Implemented
+
+### Customers
+
+* customer_name cannot be NULL
+
+### Accounts
+
+* customer_id must exist in Customers table
+
+### Loans
+
+* loan_amount > 0
+* customer_id must exist
+
+### Transactions
+
+* amount > 0
+* account_id must exist
+* transaction_id should be unique
+
+---
+
+## Tables Created
+
+### Silver Tables
+
+* silver.customers
+* silver.accounts
+* silver.loans
+* silver.transactions
+
+### Rejected Tables
+
+* silver.rejected_customers
+* silver.rejected_accounts
+* silver.rejected_loans
+* silver.rejected_transactions
+
+### Audit Table
+
+* silver.audit_table
+
+---
+
+## Interview Questions
+
+Q. What is the purpose of the Silver Layer?
+
+Answer:
+The Silver Layer cleans, validates, and standardizes raw data before it is used for analytics and reporting.
+
+---
+
+Q. Why use Left Anti Join?
+
+Answer:
+Left Anti Join is used to identify records that do not have matching records in another table, helping enforce referential integrity.
+
+---
+
+Q. Why maintain Rejected Tables?
+
+Answer:
+Rejected tables preserve invalid records for auditing, troubleshooting, and data governance instead of permanently deleting them.
+
+---
+
+Q. How did you monitor data quality?
+
+Answer:
+Created an audit table containing total, valid, and rejected records for each dataset after validation.
+
+---
+
+## Key Learning
+
+A production-ready ETL pipeline should not only load data but also validate, clean, audit, and track rejected records before making data available for analytics.

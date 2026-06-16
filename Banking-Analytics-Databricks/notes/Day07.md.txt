@@ -1,0 +1,272 @@
+Day 07 - Fraud Detection Analytics
+Objective
+
+Identify suspicious banking transactions using rule-based fraud detection and categorize transactions into risk levels.
+
+What is Fraud Detection?
+Simple Explanation
+
+Fraud Detection is the process of identifying suspicious transactions that may require investigation.
+
+Example:
+
+Normal Transaction = ₹2,000
+
+Suddenly = ₹70,000
+
+⚠ Suspicious Transaction
+Fraud Detection Flow
+Transactions
+      │
+      ▼
+
+Fraud Rules
+      │
+      ▼
+
+Fraud Alerts
+      │
+      ▼
+
+Investigation Team
+Rule-Based Fraud Detection
+Rule Used
+amount > 50000
+
+If transaction amount is greater than ₹50,000:
+
+Flag as Fraud Alert
+Fraud Alert Table
+
+Created:
+
+gold.fraud_alerts
+
+Purpose:
+
+Store suspicious transactions separately for monitoring and investigation.
+
+Example:
+
+transaction_id	amount	fraud_reason
+T007	70000	High Value Transaction
+Risk Categorization
+
+Purpose:
+
+Classify transactions based on risk level.
+
+Business Rules
+Amount <= 20000
+      ↓
+Low Risk
+
+Amount > 20000 and <= 50000
+      ↓
+Medium Risk
+
+Amount > 50000
+      ↓
+High Risk
+Risk Analysis Table
+
+Created:
+
+gold.transaction_risk_analysis
+
+Example:
+
+transaction_id	amount	risk_category
+T001	3000	Low Risk
+T006	25000	Medium Risk
+T007	70000	High Risk
+Fraud Summary KPIs
+
+Created:
+
+gold.fraud_summary
+
+Metrics:
+
+Total Transactions
+
+Total Fraud Alerts
+
+Fraud Percentage
+
+Formula:
+
+Fraud Percentage
+
+=
+
+(Total Fraud Alerts / Total Transactions)
+
+× 100
+
+Example:
+
+Total Transactions = 7
+
+Fraud Alerts = 1
+
+Fraud Percentage = 14.29%
+New PySpark Concepts Learned
+withColumn()
+
+Purpose:
+
+Create a new column.
+
+Example:
+
+.withColumn("risk_category", ...)
+lit()
+
+Purpose:
+
+Add a constant value to every row.
+
+Example:
+
+lit("High Value Transaction")
+
+Output:
+
+fraud_reason = High Value Transaction
+when()
+
+Purpose:
+
+Apply conditional logic.
+
+Example:
+
+when(amount > 50000, "High Risk")
+
+Equivalent SQL:
+
+CASE WHEN amount > 50000
+THEN 'High Risk'
+END
+otherwise()
+
+Purpose:
+
+Default condition when no rule matches.
+
+Example:
+
+.otherwise("Low Risk")
+Tables Created
+gold.fraud_alerts
+
+gold.transaction_risk_analysis
+
+gold.fraud_summary
+Architecture Till Day 07
+CSV Files
+     │
+     ▼
+
+Volume
+     │
+     ▼
+
+Bronze Layer
+│
+├── customers
+├── accounts
+├── loans
+└── transactions
+     │
+     ▼
+
+Silver Layer
+│
+├── customers
+├── accounts
+├── loans
+├── transactions
+│
+├── rejected_customers
+├── rejected_accounts
+├── rejected_loans
+├── rejected_transactions
+│
+└── audit_table
+     │
+     ▼
+
+Gold Layer
+│
+├── customer_summary
+├── branch_summary
+├── loan_summary
+├── transaction_summary
+│
+├── fraud_alerts
+├── transaction_risk_analysis
+└── fraud_summary
+
+
+
+Q1. What is Fraud Detection?
+
+Answer:
+
+Fraud Detection is the process of identifying suspicious transactions based on predefined business rules or machine learning models.
+
+Q2. How did you implement fraud detection in your project?
+
+Answer:
+
+I implemented a rule-based fraud detection framework in Databricks using PySpark. Transactions above ₹50,000 were flagged as suspicious and stored in a fraud alerts table.
+
+Q3. What was your fraud rule?
+
+Answer:
+
+Transactions with an amount greater than ₹50,000 were classified as High Value Transactions and flagged for investigation.
+
+Q4. What is risk categorization?
+
+Answer:
+
+Risk categorization classifies transactions into Low, Medium, and High Risk based on transaction amount.
+
+Q5. What is the purpose of the fraud_alerts table?
+
+Answer:
+
+The fraud_alerts table stores suspicious transactions separately for monitoring, auditing, and investigation.
+
+Q6. What does withColumn() do?
+
+Answer:
+
+withColumn() is used to create or modify a column in a DataFrame.
+
+Q7. What does lit() do?
+
+Answer:
+
+lit() creates a constant value column for all rows in a DataFrame.
+
+Q8. What does when() do?
+
+Answer:
+
+when() is used for conditional logic in PySpark and works similarly to SQL CASE WHEN statements.
+
+Q9. What KPIs did you create for fraud monitoring?
+
+Answer:
+
+I created Total Transactions, Total Fraud Alerts, and Fraud Percentage KPIs for fraud monitoring and reporting.
+
+Q10. Why is fraud detection important in banking?
+
+Answer:
+
+Fraud detection helps banks identify suspicious transactions early, reduce financial losses, and improve customer security.

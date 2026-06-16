@@ -1,0 +1,6 @@
+account_id,customer_id,branch,balance
+A1001,C101,Delhi,50000
+A1002,C102,Mumbai,75000
+A1003,C103,Pune,60000
+A1004,C104,Bangalore,90000
+A1005,C105,Chennai,120000

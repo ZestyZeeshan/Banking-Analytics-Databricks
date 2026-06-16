@@ -1,0 +1,20 @@
+
+- Learned banking data model.
+- Understood Primary Key and Foreign Key relationships.
+- Designed Customer, Account, Transaction and Loan tables.
+- Created sample banking datasets.
+- Understood why normalized tables are preferred over a single large table.
+
+Relationships:
+
+Customer -> Account -> Transaction
+
+-> Why separate Customer and Account tables?
+
+Answer: A customer can have multiple accounts, so storing them separately reduces redundancy and improves data management.
+
+Customer -> Loan
+
+Why separate Transactions?
+
+-> Answer: Transactions grow rapidly and represent a different business entity, making separate storage more scalable and efficient.

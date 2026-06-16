@@ -1,0 +1,4 @@
+loan_id,customer_id,loan_amount,loan_type
+L001,C101,500000,Personal
+L002,C103,300000,Car
+L003,C105,800000,Home

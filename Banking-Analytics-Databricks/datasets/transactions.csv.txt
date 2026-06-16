@@ -1,0 +1,8 @@
+transaction_id,account_id,transaction_date,amount,transaction_type,merchant
+T001,A1001,2025-01-01,3000,Debit,Amazon
+T002,A1001,2025-01-02,15000,Credit,Salary
+T003,A1002,2025-01-01,2500,Debit,Swiggy
+T004,A1003,2025-01-03,4000,Debit,Flipkart
+T005,A1004,2025-01-04,50000,Debit,Apple
+T006,A1005,2025-01-05,25000,Credit,Bonus
+T007,A1005,2025-01-06,70000,Debit,CarDealer
